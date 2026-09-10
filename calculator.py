@@ -4,7 +4,7 @@ def main():
     print("The square of the number is:", ans);
 
 def calculatora(n):
-    return n+n
+    return n * n
 
 if __name__ == "__main__":
     main()
