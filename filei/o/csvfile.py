@@ -14,17 +14,45 @@
 #         # row[0] is the name and row[1] is the city.
 #         print(f"{row[0]} live in {row[1]}")
 
-students = []
+# students = []
 
+# with open("name.csv") as file:
+#     for line in file:
+
+#         # Remove newline and split CSV data at comma
+#         name, house = line.rstrip().split(",")
+
+#         # Create a sentence and add it to the list
+#         students.append(f"{name} is in {house}")
+
+# # Sort students alphabetically and print each one
+# for student in sorted(students):
+#     print(student)
+# Store each CSV row as a dictionary in this list.
+student=[]
+
+# Read the name and city values from the CSV file.
 with open("name.csv") as file:
     for line in file:
+        name,city=line.rstrip().split(",")
 
-        # Remove newline and split CSV data at comma
-        name, house = line.rstrip().split(",")
+        # Create one dictionary for the current student.
+        students={ "name":name,"city":city}
+        # students["name"]=name
+        # students["city"]=city
+        student.append(students)
 
-        # Create a sentence and add it to the list
-        students.append(f"{name} is in {house}")
+# Return the name used to sort each dictionary.
+# sorted() will call this function once for every dictionary.
+def get_name(student):
+    return student["name"]
 
-# Sort students alphabetically and print each one
-for student in sorted(students):
-    print(student)
+# key tells sorted() which value to compare when ordering the records.
+# We pass get_name without parentheses because sorted() needs the function
+# itself so it can call get_name(student) for every item.
+# Writing get_name() would call the function immediately without an argument
+# and would return a string instead of giving sorted() a function to use.
+# reverse=False is the default, so the names are sorted from A to Z.
+for students in sorted(student,key=get_name):
+    print(f"{students['name']} is in {students['city']}")
+          
