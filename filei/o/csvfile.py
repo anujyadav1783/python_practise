@@ -53,6 +53,16 @@ def get_name(student):
 # Writing get_name() would call the function immediately without an argument
 # and would return a string instead of giving sorted() a function to use.
 # reverse=False is the default, so the names are sorted from A to Z.
-for students in sorted(student,key=get_name):
+for students in sorted(student,key=lambda students:students["city"]):
     print(f"{students['name']} is in {students['city']}")
-          
+          # Lambda Function:
+# A lambda function is a small anonymous function written in one line.
+# Syntax: lambda arguments: expression
+# Example: lambda student: student["name"]
+# It takes one student and returns the student's name.
+#
+# sorted():
+# sorted() is used to sort items in a list and returns a new sorted list.
+# The key parameter tells sorted() what value to use for sorting.
+# Example: sorted(students, key=lambda student: student["name"])
+# This sorts the students alphabetically by their name.
